@@ -17,5 +17,7 @@ void DE_discard(DeckEmulatorRef);
 void DE_initiGame(DeckEmulatorRef);
 void DE_endGame(DeckEmulatorRef);
 void DE_startGame(DeckEmulatorRef);
+void DE_savegame(DeckEmulatorRef, FILE* stream);
+void DE_loadgame(DeckEmulatorRef, FILE* stream);
 
 #endif
