@@ -4,8 +4,6 @@
 #include "deckLib.h"
 
 void DE_startGame(DeckEmulatorRef game){
-  FILE* gameData;
-  gameData = fopen("gameData", "r+");
   int gameRunning = 1;
   char respuesta[3];
   while(gameRunning == 1){
@@ -28,10 +26,12 @@ void DE_startGame(DeckEmulatorRef game){
       DE_printDeck(game);
     }
     else if(respuesta[0] == 's'){
-      DE_savegame(game, gameData);
+      DE_savegame(game);
+      DE_printDeck(game);
     }
     else if(respuesta[0] == 'l'){
-      DE_loadgame(game, gameData);
+      DE_loadgame(game);
+      DE_printDeck(game);
     }
     else if(respuesta[0] == 'e'){
       gameRunning = 0;
@@ -134,31 +134,59 @@ void DE_endGame(DeckEmulatorRef game){
   free(game->deck);
 }
 
-void DE_savegame(DeckEmulatorRef game, FILE* stream){
+void DE_savegame(DeckEmulatorRef game){
   printf("Guardando juego...\n");
-  fseek(stream, 0, SEEK_SET);
+  FILE* gameData;
+  gameData = fopen("gameData", "w+");
+  fseek(gameData, 0, SEEK_SET);
   if(game->card_in_hand != 0){
-      fprintf(stream, "%c-", game->card_in_hand);
+      fprintf(gameData, "%c-", game->card_in_hand);
     }
   for(int i = 0; i <= game->card_count-1; i++){
-    fprintf(stream, "%c", game->deck[i]);
+    fprintf(gameData, "%c", game->deck[i]);
   }
+  fclose(gameData);
   printf("Juego guardado correctamente\n");
 }
 
-void DE_loadgame(DeckEmulatorRef game, FILE* stream){
+void DE_loadgame(DeckEmulatorRef game){
   printf("Cargando juego...\n");
-  int readChar;
-  for(int i = 0; i <= ftell(stream); i++){
-    if(fscanf(stream, "%c", &readChar) == '-'){
-      game->card_in_hand = readChar-1;
-      printf("%c", game->card_in_hand);
+  FILE* gameData;
+  gameData = fopen("gameData", "r");
+  int contador = 0, hasCardInHand = 0; 
+  fseek(gameData, 0, SEEK_SET);
+  char c = fgetc(gameData);
+  while (c != EOF){ 
+    if(c == '-'){
+      hasCardInHand++;
+    }
+    c = fgetc(gameData); 
+  }
+  if(hasCardInHand == 1){
+    game->card_count = ftell(gameData)-2;
+    fseek(gameData, 0, SEEK_SET);
+    c = fgetc(gameData); 
+    game->card_in_hand = c;
+    fseek(gameData, 2, SEEK_SET);
+    c = fgetc(gameData);
+    while (c != EOF) 
+    {
+      game->deck[contador] = c;
+      contador++;
+      c = fgetc(gameData); 
     }
   }
-  /*while(fscanf(stream, "%c", &readChar) != EOF)
-  {
-    printf("leimos [%d ] y el agregado es [%d] \n", readChar);
-  }*/
+  else{
+    game->card_count = ftell(gameData);
+    fseek(gameData, 0, SEEK_SET);
+    c = fgetc(gameData); 
+    while (c != EOF) 
+    { 
+      game->deck[contador] = c;
+      contador++;
+      c = fgetc(gameData); 
+    }
+  }
+  fclose(gameData);
   printf("Juego cargado correctamente\n");
-  DE_printDeck(game);
 }
