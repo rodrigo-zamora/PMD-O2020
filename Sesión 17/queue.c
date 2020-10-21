@@ -38,8 +38,7 @@ void printQueue(queueRef queue, nodeRef node){
     }
 }
 
-void queueOffer(queueRef queue, char data)
-{
+void queueOffer(queueRef queue, char data){
     struct strNode* new = malloc(sizeof(struct strNode));
     new->data = data;
     new->next = NULL;
@@ -48,7 +47,6 @@ void queueOffer(queueRef queue, char data)
         queue->last = new;
     }else{
         queue->last->next = new;
-        queue->last = new;
     }
     queue->size++;
 }
