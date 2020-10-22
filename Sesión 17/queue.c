@@ -29,11 +29,12 @@ char queuePeekqueueRef(queueRef queue)
 
 }
 
-void printQueue(queueRef queue, nodeRef node){
+void printQueue(queueRef queue){
     int contador = 0;
-    while(queue->first != NULL && contador != queue->size){
-        printf("[%c] ", queue->first->data);
-        queue->first = queue->last->next;
+    nodeRef focusNode = queue->last;
+    while(focusNode != NULL && contador <= queue->size){
+        printf("[%c] ", focusNode->data);
+        focusNode = focusNode->next;
         contador++;
     }
 }
@@ -45,18 +46,47 @@ void queueOffer(queueRef queue, char data){
     if(queue->size == 0){
         queue->first = new;
         queue->last = new;
-    }else{
-        queue->last->next = new;
+    } else {
+        new->next = queue->last;
+        queue->last = new;
     }
     queue->size++;
 }
 
 char queuePoll(queueRef queue)
 {
+    int contador = 1;
+    nodeRef focusNode = queue->last;
+    nodeRef toRemove = queue->first;
 
+    if(queue->size == 1){
+        queue->size = 0;
+        queue->first = NULL;
+        queue->last = NULL;
+    } else{
+        while(focusNode != NULL && contador <= queue->size){
+            if(contador == (queue->size)-1){
+                queue->first = focusNode;
+                focusNode->next = focusNode->next->next;
+            } else {
+                focusNode = focusNode->next;
+            }
+            contador++;
+        }
+        queue->size--;
+        free(focusNode);
+        return toRemove->data;
+    }
 }
-
 void queueDestroy(queueRef queue)
 {
-
+    if(queue->size > 1){
+        nodeRef focusNode = queue->last;
+        while(focusNode != NULL){
+            queuePoll(queue);
+            focusNode = focusNode->next;
+        }
+    }
+    free(queue->first);
+    queue->size = -1;
 }

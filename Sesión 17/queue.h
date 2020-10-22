@@ -28,4 +28,4 @@ char queuePoll(queueRef);
 
 void queueDestroy(queueRef);
 
-void printQueue(queueRef, nodeRef);
+void printQueue(queueRef);

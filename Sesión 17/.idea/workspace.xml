@@ -10,14 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81e19f7d-061c-48e4-9b39-efce8b06a3dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 11/colorTest.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 11/colorTest.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 11/deckEmulator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 11/deckEmulator.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 11/gameData" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 11/gameData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 4/multiArrayPointer.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 4/multiArrayPointer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 6/heap.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 6/heap.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesion 6/multiThread.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion 6/multiThread.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sesión 9/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesión 9/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue.c" beforeDir="false" afterPath="$PROJECT_DIR$/queue.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue.exe" beforeDir="false" afterPath="$PROJECT_DIR$/queue.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603318614984</updated>
-      <workItem from="1603318616055" duration="87000" />
+      <workItem from="1603318616055" duration="854000" />
     </task>
     <servers />
   </component>
@@ -58,6 +53,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1603320198940">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/-1920.-156.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1603320198940" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1603318704717">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

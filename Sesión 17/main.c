@@ -3,20 +3,17 @@
 #include "queue.h"
 
 int main(){
-
-    char c = 'a';
-
     struct strQueue* queue = queueCreate();
-    struct strNode* node = NULL; //de mucha ayuda
+    char c = 'a';
     queueOffer(queue, c);
     c = 'b'; //autosuicidación
-    queueOffer(queue, c);
+    //queueOffer(queue, c);
     c = 'c'; //lloración
-    queueOffer(queue, c);
+    /*queueOffer(queue, c);
     c = 'd';
     queueOffer(queue, c);
     c = 'e';
-    queueOffer(queue, c);
+    queueOffer(queue, c);*/
     int isEmpty = queue_isEmpty(queue);
     if(isEmpty == 1){
         printf("La cola esta vacia\n");
@@ -24,5 +21,12 @@ int main(){
     else {
         printf("La cola no esta vacia. Tiene %d elementos\n", queueSize(queue));
     }
-    printQueue(queue, node);
+    printQueue(queue);
+    printf("\nPrimer caracter: %c\n", queuePoll(queue));
+    printQueue(queue);
+    /*printf("\nPrimer caracter: %c\n", queuePoll(queue));
+    printQueue(queue);*/
+    queueDestroy(queue);
+    printf("\n");
+    printQueue(queue);
 }
