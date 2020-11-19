@@ -9,11 +9,11 @@ int main(){
     c = 'b'; //autosuicidación
     //queueOffer(queue, c);
     c = 'c'; //lloración
-    /*queueOffer(queue, c);
+    queueOffer(queue, c);
     c = 'd';
     queueOffer(queue, c);
     c = 'e';
-    queueOffer(queue, c);*/
+    queueOffer(queue, c);
     int isEmpty = queue_isEmpty(queue);
     if(isEmpty == 1){
         printf("La cola esta vacia\n");

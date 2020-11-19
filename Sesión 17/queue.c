@@ -55,7 +55,7 @@ void queueOffer(queueRef queue, char data){
 
 char queuePoll(queueRef queue)
 {
-    int contador = 1;
+    int contador = 1;   
     nodeRef focusNode = queue->last;
     nodeRef toRemove = queue->first;
 
