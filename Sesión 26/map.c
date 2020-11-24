@@ -35,13 +35,29 @@ void mapPut(Map* m, char* key, char* value)
         if(strcmp(focusNode->key, key) == 0){
             return;
         }
+
+        Node* n = newNode(key, value);
+        focusNode->next = n;
     }
 }
 
 char* mapGet(Map* m, char* key)
 {
     int hashKey = m->HashFunction(key) % m->tableSize;
-    return m->hashTable[hashKey]->value;
+    
+    Node* focusNode = m->hashTable[hashKey];
+    if(focusNode == NULL){
+        return NULL;
+    }
+    while(focusNode != NULL)
+    {
+        if(strcmp(focusNode->key, key) == 0){
+            return focusNode->value;
+        }
+        focusNode = focusNode->next;
+    }
+    return NULL;
+    
 }
 
 int mapContains(Map* m, char* key);
